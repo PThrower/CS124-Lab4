@@ -45,5 +45,18 @@ string getDateTimeNow() {
 }
 
 void openFile(fstream& inFile, string fileName) {
-	inFile.open(fileName);
+	try {
+		inFile.open(fileName);
+		if (inFile) {
+		}
+		else { throw(fileName); } 
+	}
+	catch (string filename) {
+		cout << "Couldn't read file: " << filename << ".";
+		cout << "Please try again: ";
+		cin.clear();
+		cin.ignore();
+		cin >> fileName;
+		openFile(inFile, fileName);
+	}
 }
