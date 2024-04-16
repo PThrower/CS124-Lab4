@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 #include "task.h"
-#include "linkedStack.h"
+#include "hashTable.h"
 
 using namespace std;
 
-class TaskList : public LinkedStack<Task> {
+class TaskList : public HashTable<Task> {
 
 public:
 	TaskList();

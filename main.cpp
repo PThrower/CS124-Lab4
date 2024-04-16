@@ -14,7 +14,7 @@ void showBanner();
 
 int main() {
 	showBanner();
-	TaskMenu menu;
+	TaskMenu<int> menu;
 	menu.activate();
 
 	return 0;

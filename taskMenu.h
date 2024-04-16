@@ -8,13 +8,14 @@
 #include <fstream>
 #include "menu.h"
 #include "task.h"
-#include "taskList.h"
+#include "hashTable.h"
 
 using namespace std;
 
 const string TASK_DATA = "task_data.csv";
 enum COMMAND { ADD='a', EDIT='e', DELETE='d', PENDING = 'p', DONE = 'c', EXIT = 'x' };
 
+template <typename T>
 class TaskMenu :public Menu {
 public:
     TaskMenu();
@@ -33,5 +34,5 @@ protected:
 
 private:
     fstream inFile;
-    TaskList* list;
+    HashTable<T>* list;
 };
