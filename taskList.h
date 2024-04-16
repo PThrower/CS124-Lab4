@@ -1,14 +1,16 @@
 #pragma once
 #include <string>
+#include <map>
+#include <unordered_map>
 #include "task.h"
-#include "linkedStack.h"
+#include "hashTable.h"
 
 using namespace std;
 
-class TaskList : public LinkedStack<Task> {
+class TaskList : public HashTable<Task> {
 
 public:
-	TaskList();
+	TaskList() : HashTable<Task>() {}
 	~TaskList();
 
 	void addNew();
@@ -22,4 +24,7 @@ protected:
 
 private:
 	void printHeader();
+	unordered_map<string, Task> pendingTasks; // Change HashTable to unordered_map
+    unordered_map<string, Task> tasks;
+    map<string, Task> completedTasks; // Change HashTable to unordered_map
 };

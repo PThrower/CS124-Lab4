@@ -17,7 +17,7 @@ enum COMMAND { ADD='a', EDIT='e', DELETE='d', PENDING = 'p', DONE = 'c', EXIT = 
 
 class TaskMenu :public Menu {
 public:
-    TaskMenu();
+    TaskMenu(unordered_map<string, Task>& tasks);
     ~TaskMenu();
 
     void viewPendingTasks();
@@ -34,4 +34,5 @@ protected:
 private:
     fstream inFile;
     TaskList* list;
+    unordered_map<string, Task>& tasks;
 };

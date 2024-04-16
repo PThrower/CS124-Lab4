@@ -11,10 +11,11 @@
 #include "taskMenu.h"
 #include "menu.h"
 #include "dateTime.h"
+#include "taskList.h"
 
 using namespace std;
 
-TaskMenu::TaskMenu() : Menu("Main Menu") {
+TaskMenu::TaskMenu(unordered_map<string, Task>& tasks) : tasks(tasks), Menu("Main Menu") {
 	addOption("a) Add task");
 	addOption("e) Edit task");
 	addOption("d) Delete task");
@@ -31,6 +32,37 @@ TaskMenu::~TaskMenu() {
 }
 
 void TaskMenu::init() {
+    inFile.open(TASK_DATA);
+
+    string text;
+    string line = "";
+    bool firstRow = true;
+    while (getline(inFile, line)) {
+        // Skip the first row
+        if (firstRow) {
+            firstRow = false;
+            continue;
+        }
+        stringstream ss(line);
+        Task task;
+        getline(ss, text, ',');
+        task.setTerm(text);
+        getline(ss, text, ',');
+        task.setName(text);
+        getline(ss, text, ',');
+        task.setStartDate(text);
+        getline(ss, text, ',');
+        task.setEndDate(text);
+        getline(ss, text, ',');
+        task.setStatus(stoi(text));    // value =1 means DONE! and value = 0 is pending
+
+        // Add the task to the map
+        tasks.insert({task.getName(), task});
+    }
+    inFile.close();
+}
+
+/*void TaskMenu::init() {
 	inFile.open(TASK_DATA);
 
 	string text;
@@ -57,7 +89,7 @@ void TaskMenu::init() {
 		list->push(task);
 	}
 	inFile.close();
-}
+}*/
 
 void TaskMenu::viewPendingTasks() {
 	showOption(getName(3).substr(3));
