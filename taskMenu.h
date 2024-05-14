@@ -15,7 +15,8 @@ using namespace std;
 const string TASK_DATA = "task_data.csv";
 enum COMMAND { ADD='a', EDIT='e', DELETE='d', PENDING = 'p', DONE = 'c', EXIT = 'x' };
 
-class TaskMenu :public Menu {
+template <typename T>
+class TaskMenu :public Menu<T> {
 public:
     TaskMenu();
     ~TaskMenu();
