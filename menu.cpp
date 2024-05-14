@@ -1,7 +1,7 @@
 /**
-* Author: John Doe
-* Description: Manage Tasks using Map, HashTable, and Try-Catch
-* Due Date: 10/24/2024
+* Author: Parnell Thrower III
+* Description: Changed the member functions to template type.
+* Due Date: 5/13/2024
 */
 
 #include <iostream>
@@ -14,22 +14,24 @@ using namespace std;
 /**
 * Initial menu name
 */
-template <typename T>
-Menu::Menu( name) {
+template <typename T >
+Menu<T>::Menu(T name) {
     this->name = name;
 }
 
 /**
 * Add menu open name
 */
-void Menu::addOption(string option) {
+template <typename T >
+void Menu<T>::addOption(T option) {
     options.push_back(option);
 }
 
 /**
 * Dipslay option nam
 */
-void Menu::display() const {
+template <typename T >
+void Menu<T>::display() const {
     cout << "***** " << name << " *****" << endl;
     for (int i = 0; i < (int)options.size(); i++) {
         cout << options[i] << endl;
@@ -40,7 +42,8 @@ void Menu::display() const {
 /**
 * Display ordered index and option name
 */
-void Menu::displayPrefixIndex() const {
+template <typename T >
+void Menu<T>::displayPrefixIndex() const {
     cout << "***** " << name << " *****" << endl;
     for (int i = 0; i < (int)options.size(); i++) {
         cout << i + 1 << ") " << options[i] << endl;
@@ -50,7 +53,8 @@ void Menu::displayPrefixIndex() const {
 /**
 * Display option menu, option name; and ask users to select a choice by index
 */
-int Menu::doMenuIndex() const {
+template <typename T >
+int Menu<T>::doMenuIndex() const {
     char ch;
     int input = 0;
     do {
@@ -64,7 +68,8 @@ int Menu::doMenuIndex() const {
 /**
 * Display option menu, option name; and ask users to select a choice
 */
-int Menu::doMenu() const {
+template <typename T >
+int Menu<T>::doMenu() const {
     int input = 0;
     do {
         display();
@@ -76,7 +81,8 @@ int Menu::doMenu() const {
 /**
 * Display option menu, option name; and ask users to select a choice
 */
-char Menu::doMenuOption() const {
+template <typename T >
+char Menu<T>::doMenuOption() const {
     char input;
     display();
     cin >> input;
