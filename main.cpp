@@ -1,7 +1,7 @@
 /**
-* Author: Parnell Thrower
+* Author: John Doe
 * Description: Manage Tasks using Map, HashTable, and Try-Catch
-* Due Date: 4/20/2024
+* Due Date: 10/24/2024
 */
 
 #include <iostream>

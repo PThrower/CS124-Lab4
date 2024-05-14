@@ -1,7 +1,7 @@
 /**
-* Author: Parnell Thrower
+* Author: John Doe
 * Description: Manage Tasks using Map, HashTable, and Try-Catch
-* Due Date: 4/20/2024
+* Due Date: 10/24/2024
 */
 
 #pragma once
@@ -17,7 +17,7 @@ enum COMMAND { ADD='a', EDIT='e', DELETE='d', PENDING = 'p', DONE = 'c', EXIT = 
 
 class TaskMenu :public Menu {
 public:
-    TaskMenu(unordered_map<string, Task>& tasks);
+    TaskMenu();
     ~TaskMenu();
 
     void viewPendingTasks();
@@ -34,5 +34,4 @@ protected:
 private:
     fstream inFile;
     TaskList* list;
-    unordered_map<string, Task>& tasks;
 };

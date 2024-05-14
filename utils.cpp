@@ -1,7 +1,7 @@
 /**
-* Author: Parnell Thrower
+* Author: John Doe
 * Description: Manage Tasks using Map, HashTable, and Try-Catch
-* Due Date: 4/20/2024
+* Due Date: 10/24/2024
 */
 #define _CRT_SECURE_NO_WARNINGS // supress localtime warning
 
@@ -45,18 +45,5 @@ string getDateTimeNow() {
 }
 
 void openFile(fstream& inFile, string fileName) {
-	try {
-		inFile.open(fileName);
-		if (inFile) {
-		}
-		else { throw(fileName); } 
-	}
-	catch (string filename) {
-		cout << "Couldn't read file: " << filename << ".";
-		cout << "Please try again: ";
-		cin.clear();
-		cin.ignore();
-		cin >> fileName;
-		openFile(inFile, fileName);
-	}
+	inFile.open(fileName);
 }

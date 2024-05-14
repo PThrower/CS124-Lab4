@@ -1,7 +1,7 @@
 /**
-* Author: Parnell Thrower
+* Author: John Doe
 * Description: Manage Tasks using Map, HashTable, and Try-Catch
-* Due Date: 4/20/2024
+* Due Date: 10/24/2024
 */
 
 #include <iostream>
@@ -14,7 +14,8 @@ using namespace std;
 /**
 * Initial menu name
 */
-Menu::Menu(string name) {
+template <typename T>
+Menu::Menu( name) {
     this->name = name;
 }
 

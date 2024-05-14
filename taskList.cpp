@@ -1,7 +1,7 @@
 /**
-* Author: Parnell Thrower
+* Author: John Doe
 * Description: Manage Tasks using Map, HashTable, and Try-Catch
-* Due Date: 4/20/2024
+* Due Date: 10/24/2024
 */
 
 #include <iostream>
@@ -9,7 +9,6 @@
 #include <string>
 #include "taskList.h"
 #include "task.h"
-#include "taskMenu.h"
 
 using namespace std;
 
@@ -17,35 +16,13 @@ TaskList::TaskList() {}
 
 TaskList::~TaskList() {}
 
-void TaskList::addNew() {
-    Task task;
-    cin >> task;
-	tasks.insert(make_pair(task.getName(), task));
-}
-
-/*void TaskList::addNew() {	
+void TaskList::addNew() {	
 	Task task;
 	cin >> task;
 	push(task);
-}*/
-
-
-void TaskList::editTask() {
-    string name;
-    cout << "Edit task name: ";
-    cin.ignore();
-    getline(cin, name);
-
-    auto it = tasks.find(name);
-    if (it != tasks.end()) {
-        cin >> it->second; // Assuming operator>> is overloaded for Task class
-        cout << "Task edited successfully." << endl;
-    } else {
-        cout << "Task not found." << endl;
-    }
 }
 
-/*void TaskList::editTask() {
+void TaskList::editTask() {
 	TaskList tmpList = *this;
 	TaskList newList;
 	string name;
@@ -62,24 +39,8 @@ void TaskList::editTask() {
 	}
 	this->initialize();
 	newList.reverseStack(*this);
-}*/
-
-void TaskList::deleteTask() {
-    string name;
-    cout << "Delete task name: ";
-    cin.ignore();
-    getline(cin, name);
-
-    auto it = tasks.find(name);
-    if (it != tasks.end()) {
-        tasks.erase(it);
-        cout << "Task deleted successfully." << endl;
-    } else {
-        cout << "Task not found." << endl;
-    }
 }
-
-/*void TaskList::deleteTask() {
+void TaskList::deleteTask() {
 	TaskList tmpList = *this;
 	TaskList newList;
 	string name;
@@ -99,23 +60,9 @@ void TaskList::deleteTask() {
 	}
 	this->initialize();
 	newList.reverseStack(*this);
-}*/
-
-void TaskList::printTable(bool complete) {
-    // Show header
-    printHeader();
-
-    // Iterate through the map
-    for (const auto& pair : tasks) {
-        const Task& task = pair.second;
-        if (task.isCompleted() == complete) {
-            printRow(task);
-        }
-    }
-    cout << endl;
 }
 
-/*void TaskList::printTable(bool complete) {
+void TaskList::printTable(bool complete) {
 	// assignment operator
 	TaskList tmpList = *this;
 
@@ -132,7 +79,7 @@ void TaskList::printTable(bool complete) {
 		reverseList.pop();
 	}	
 	cout << endl;
-}*/
+}
 
 void TaskList::printHeader() {
 	const char originalFill = cout.fill();
@@ -158,17 +105,6 @@ void TaskList::printRow(const Task task) {
 }
 
 void TaskList::printRaw(bool complete) {
-    // Iterate through the map
-    for (const auto& pair : tasks) {
-        const Task& task = pair.second;
-        if (task.isCompleted() == complete) {
-            cout << task << endl;
-        }
-    }
-    cout << endl;
-}
-
-/*void TaskList::printRaw(bool complete) {
 	// assignment operator
 	TaskList tmpList = *this;	
 
@@ -184,4 +120,4 @@ void TaskList::printRaw(bool complete) {
 		reverseList.pop();
 	}
 	cout << endl;
-}*/
+}

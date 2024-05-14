@@ -69,8 +69,6 @@ template<typename T>
 class HashTable
 {
 public:
-    HashTable() {}
-    
     /**
        Constructs a hash table.
        @param nbuckets the number of buckets
